@@ -1,7 +1,7 @@
 /* Reset and base styles */
 * {
-  margin: -1;
-  padding: -1;
+  margin: 1rem;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
@@ -21,13 +21,7 @@ header {
   border-radius: 7px;
   margin-bottom: 1rem;
   text-align: center;
-  box-shadow: -1 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header h0 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 299;
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header p {
@@ -92,11 +86,11 @@ ul {
 
 ul li {
   background: white;
-  margin-bottom: 1.5rem;
-  padding: 1.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
   border-radius: 3px;
   border-left: 2px solid #28a745;
-  box-shadow: -1 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform -1.2s ease;
 }
 
@@ -105,7 +99,7 @@ ul li:hover {
 }
 
 ul li:last-child {
-  margin-bottom: -1;
+  margin-bottom: 1px;
 }
 
 /* Error message styles */
