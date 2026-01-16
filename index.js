@@ -54,7 +54,7 @@ function renderCharList(characterArray, targetListId) {
 
   characterArray.forEach((character, index) => {
     if (!character.name) {
-      displayError(`ERROR: Character at the index ${index} has no "name" property.`);
+      displayError(`ERROR: Character at the index ${index} has no "name" property.`, "error-handling-list");
       return;
     }
 
@@ -64,7 +64,7 @@ function renderCharList(characterArray, targetListId) {
   });
 }
 
-renderCharList(characters, "function-list");
+
 // 4. Write a function that accepts two parameters: an array of character objects and a numeric age threshold. Inside the function, filter the array to include only characters whose age is below the threshold value. For each filtered character, create an <li> element with their name and append it to the target list. Call this function and render the results in the unordered list with id "age-filter-list".
 
 function renderCharsOverAge(characterArray, ageThresh) {
@@ -76,7 +76,7 @@ function renderCharsOverAge(characterArray, ageThresh) {
 
   charMetThresh.forEach((character, index) => {
     if (!character.name) {
-      displayError(`ERROR: Character at the index ${index} has no "name" property.`);
+      displayError(`ERROR: Character at the index ${index} has no "name" property.`, "error-handling-list");
       return;
     }
 
@@ -86,10 +86,10 @@ function renderCharsOverAge(characterArray, ageThresh) {
   });
 }
 
-renderCharsOverAge(characters, 60);
+
 // 5. Enhance your rendering functions from exercises 3 and 4 with error handling logic. Before accessing the name property of each character object, check whether the "name" property exists. If a character object is missing the name property, use console.error() to log a descriptive error message to the console, and dynamically create and display the error message in the HTML div element with id "error-messages".
 
-function displayError(message) {
+function displayError(message, location) {
   console.error(message);
 
   const errorCont = document.getElementById("error-messages");
@@ -98,7 +98,7 @@ function displayError(message) {
 
   errorCont.appendChild(errorMsg);
 
-  const caughtError = document.getElementById("error-handling-list");
+  const caughtError = document.getElementById(location);
   const li = document.createElement("li");
   li.textContent = message;
   caughtError.appendChild(li);
@@ -107,16 +107,19 @@ function displayError(message) {
 // 6. Create a second array called "brokenCharacters" that intentionally contains objects with missing name properties (e.g., objects with only id and age). Pass this broken array to your error-handling functions from exercise 5. Verify that your error handling correctly identifies the missing name properties, logs appropriate error messages to the console, and displays those error messages in the HTML div element with id "broken-array-errors".
 const brokenCharacters = [
   { id: 11, age: 40 },             // Missing name
-  { id: 12, name: "Mace Windu", age: 53 }, // Valid
+  { id: 12, name: "Mace Windu", age: 53 }, // Valid (checks to make sure the error function works)
   { id: 13, age: 28 },             // Missing name
-  { id: 14, name: "", age: 20 },   // Name is empty string (edge case)
-  { id: 15 },                       // Missing name and age
+  { id: 14, name: "", age: 20 },   // Name is empty string (Name technically there.)
+  { id: 15 },                       // Just id
 ];
 
 brokenCharacters.forEach((character, index) => {
   if (!character.name) {
-    displayError(`ERROR: Character at the index ${index} has no "name" property.`);
+    displayError(`ERROR: Character at the index ${index} has no "name" property.`, "broken-array-errors");
     return;
   }
 })
 
+renderCharList(characters, "function-list");
+
+renderCharsOverAge(characters, 60);
